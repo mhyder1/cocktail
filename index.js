@@ -2,30 +2,29 @@
 
 const searchUrl = 'https://www.thecocktaildb.com/api/json/v1/1/search.php'
 const newsApiKey = "4c7b0c19e9d74afe982d773604074e2f"
-const newsUrl = "https://newsapi.org/v2/everything?q=cocktails&language=en";
+const newsUrl = 'https://newsapi.org/v2/everything?apiKey=4c7b0c19e9d74afe982d773604074e2f&q=cocktails';
 const videosUrl = 'https://www.googleapis.com/youtube/v3/videos'
-const videoApiKey = "AIzaSyC1arTFhv6taqAGkrGe-T7X4DlbtFitBP8"
+const videoApiKey = "AIzaSyBMYHHhHGGo-bjKN9WUx1O1jMrTuDnrMkw"
 
 
 //function to get news related to cocktails
-function newsSection() {
+function newsSection(maxResults=5) {
     const options = {
         headers: new Headers({
             "X-Api-Key": newsApiKey
         })
     };
-    fetch(newsUrl, options)
+    fetch(newsUrl)
         .then(response => response.json())
-        .then(responseJson => console.log(responseJson));
+        .then(responseJson => console.log('test', responseJson));
 };
 
-
 //format the data
-function formatQueryParams(params) {
-    const queryItems = Object.keys(params)
-        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-    return queryItems.join('&');
-}
+// function formatQueryParams(params) {
+//     const queryItems = Object.keys(params)
+//         .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
+//     return queryItems.join('&');
+// }
 
 // function displayResults(responseJson) {
 //     // if there are previous results, remove them
@@ -50,20 +49,20 @@ function formatQueryParams(params) {
 
 
 //function to get youtube videos 
-function getYoutubeVideos(argument) {
-    const params = {
-        key: videoApiKey,
-        part: 'snippet',
-        maxResults: 5,
-    };
-    const queryString = formatQueryParams(params)
-    const urlYoutube = videosUrl + '?' + queryString;
-    console.log(urlYoutube);
+// function getYoutubeVideos(argument) {
+//     const params = {
+//         key: videoApiKey,
+//         part: 'snippet',
+//         maxResults: 5,
+//     };
+//     const queryString = formatQueryParams(params)
+//     const urlYoutube = videosUrl + '?' + queryString;
+//     console.log(urlYoutube);
 
-    fetch(urlYoutube)
-    .then(response => response.json())
-    .then(responseJson => console.log(responseJson));
-};
+//     fetch(urlYoutube)
+//     .then(response => response.json())
+//     .then(responseJson => console.log(responseJson));
+// };
 
 
 
@@ -85,8 +84,8 @@ function watchForm() {
     $('form').submit(event => {
         event.preventDefault();
         const searchTerm = $('#js-search-term').val();
-        getYoutubeVideos(searchTerm);
-        newsSection("testing");
+        //         //getYoutubeVideos(searchTerm);
+        newsSection(searchTerm);
     });
 }
 

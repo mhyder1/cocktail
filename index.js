@@ -35,7 +35,7 @@ function formatQueryParams(params) {
 //function to display videos and recipes
 function displayResults(responseJson) {
 
-    $('.result-box').empty();
+    $('#results').empty();
     // const preparedData = responseJson.drinks[0].
     for (let i = 0; i < responseJson.drinks.length; i += 5) {
 
@@ -60,15 +60,10 @@ function displayResults(responseJson) {
                 <ul class="results-list1">
                     <li><h3>Cocktail Name: </h3><p>${responseJson.drinks[i].strDrink}</p></li>
                     <li><h3>Instructions: </h3><p>${responseJson.drinks[i].strInstructions}</p></li>
-                    <li><h4>Thumbnail: <img src= ${responseJson.drinks[i].strDrinkThumb}">
-                    <li><h4>Ingredients: </h3><p>${responseJson.drinks[i].strIngredient1}</p></li>
-                    <li><h4>Ingredients: </h3><p>${responseJson.drinks[i].strIngredient2}</p></li>
-                    <li><h4>Ingredients: </h3><p>${responseJson.drinks[i].strIngredient3}</p></li>
-                    <li><h4>Ingredients: </h3><p>${responseJson.drinks[i].strIngredient4}</p></li>
-                    <li><h4>Ingredients: </h3><p>${responseJson.drinks[i].strMeasure1}</p></li>
-                    <li><h4>Ingredients: </h3><p>${responseJson.drinks[i].strMeasure2}</p></li>
-                    <li><h4>Ingredients: </h3><p>${responseJson.drinks[i].strMeasure3}</p></li>
-                </ul>
+                    <li>Thumbnail: <img src="${responseJson.drinks[i].strDrinkThumb}" height="100" width="100" ></img></li>
+                    <li><h4>Ingredients: </h3><p>${responseJson.drinks[i].strIngredient}</p></li>
+                    <li><h4>Measure: </h3><p>${responseJson.drinks[i].strMeasure1}</p></li>
+                    </ul>
             </div>`
         )
     }

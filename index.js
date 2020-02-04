@@ -1,10 +1,10 @@
 'use strict'
 
-const searchUrl = 'https://www.thecocktaildb.com/api/json/v1/1/search.php'
+const searchUrl = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
 const newsApiKey = "4c7b0c19e9d74afe982d773604074e2f"
 const newsUrl = "https://newsapi.org/v2/everything?q=cocktails&language=en";
 const videosUrl = 'https://www.googleapis.com/youtube/v3/videos'
-const videoApiKey = "AIzaSyC1arTFhv6taqAGkrGe-T7X4DlbtFitBP8"
+const videoApiKey = "AIzaSyAKGQo-ob44h9u7PIs5UCx2lgkoIFVVIdw"
 
 
 //function to get news related to cocktails
@@ -19,7 +19,6 @@ function newsSection() {
         .then(responseJson => console.log(responseJson));
 };
 
-
 //format the data
 function formatQueryParams(params) {
     const queryItems = Object.keys(params)
@@ -27,67 +26,97 @@ function formatQueryParams(params) {
     return queryItems.join('&');
 }
 
-// function displayResults(responseJson) {
-//     // if there are previous results, remove them
-//     // console.log(responseJson);
-//     $('#results-list').empty();
-//     // iterate through the items array
-//     for (let i = 0; i < responseJson.items.length; i++) {
-//         // for each video object in the items 
-//         //array, add a list item to the results 
-//         //list with the video title, description,
-//         //and thumbnail
-//         $('#results-list').append(
-//             `<li><h3>${responseJson.items[i].snippet.title}</h3>
-//       <p>${responseJson.items[i].snippet.description}</p>
-//       <img src='${responseJson.items[i].snippet.thumbnails.default.url}'>
-//       </li>`
-//         )
-//     };
-//     //display the results section  
-//     $('#results').removeClass('hidden');
-//  };
+function displayResults(responseJson) {
+    //responseJson.drinks.length
+    $('#results').empty();
+    // const preparedData = responseJson.drinks[0].
 
+    console.log(responseJson)
+    for (let i = 0; i < 5; i ++) {
+
+         //prepare ingredients
+               const ingredients = [];
+
+               //preprare measure
+               const measureKeys = [];
+       
+               //get all the object properties
+               const objKeys = Object.keys(responseJson.drinks[i]);
+        
+               for (let j = 0; j < objKeys.length; j++) {
+                  
+                   if (objKeys[j].includes('strIngredient') && responseJson.drinks[i][objKeys[j]] != null) {
+                       ingredients.push(responseJson.drinks[i][objKeys[j]])
+                   }
+               } 
+               console.log(ingredients);
+               for (let j = 0; j < objKeys.length; j++) {
+                  
+                if (objKeys[j].includes('strMeasure') && responseJson.drinks[i][objKeys[j]] != null) {
+                    measureKeys.push(responseJson.drinks[i][objKeys[j]])
+                }
+            } 
+            console.log(measureKeys);
+        $('#results').append(
+            `<div>
+                <ul class="results-list1">
+                    <li><h3>Cocktail Name: </h3><p>${responseJson.drinks[i].strDrink}</p></li>
+                    <li><h3>Instructions: </h3><p>${responseJson.drinks[i].strInstructions}</p></li>
+                    <li><img src="${responseJson.drinks[i].strDrinkThumb}" height="100" width="100" alt = "picture of a cocktail"></img></li>
+                    <li><h4>Ingredients: </h3><p>${ingredients}</p></li>
+                    <li><h4></h3><p>${measureKeys}</p></li>
+                    </ul>
+            </div>`
+        )
+    }
+    $('#results').removeClass('hidden');
+}
+
+//function to get the recipe
+function getRecipe(searchTerm) {
+    const recipeSearch = searchUrl + searchTerm
+    console.log(recipeSearch)
+    fetch(recipeSearch)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJson => displayResults(responseJson))
+        .catch(err => {
+            $('#js-error-message').text(`Something went wrong: ${err.message}`);
+        });
+
+};
 
 //function to get youtube videos 
-function getYoutubeVideos(argument) {
+function getVideos(searchTerm) {
     const params = {
         key: videoApiKey,
         part: 'snippet',
         maxResults: 5,
+        chart: 'mostPopular'
     };
     const queryString = formatQueryParams(params)
     const urlYoutube = videosUrl + '?' + queryString;
-    console.log(urlYoutube);
-
+    console.log('delete', urlYoutube);
+   // const searchVideo = urlYoutube + searchTerm
     fetch(urlYoutube)
-    .then(response => response.json())
-    .then(responseJson => console.log(responseJson));
+        .then(response => response.json())
+        .then(responseJson => console.log(responseJson));
 };
 
 
-
-//     fetch(searchUrl)
-
-//         .then(response => {
-//             if (response.ok) {
-//                 return response.json();
-//             }
-//             //throw new Error(response.statusText);
-//         })
-//         // .then(responseJson => displayResults(responseJson))
-//         .catch(err => {
-//             $('#js-error-message').text(`Something went wrong: ${err.message}`);
-//         });
-// }
-
+//event listener 
 function watchForm() {
     $('form').submit(event => {
         event.preventDefault();
-        const searchTerm = $('#js-search-term').val();
-        getYoutubeVideos(searchTerm);
-        newsSection("testing");
+        this.searchTerm = $('#js-search-term').val();
+        getVideos(this.searchTerm);
+        newsSection();
+        getRecipe(this.searchTerm);
     });
 }
-
 $(watchForm);
+

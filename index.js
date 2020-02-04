@@ -32,31 +32,31 @@ function displayResults(responseJson) {
     // const preparedData = responseJson.drinks[0].
 
     console.log(responseJson)
-    for (let i = 0; i < 5; i ++) {
+    for (let i = 0; i < 5; i++) {
 
-         //prepare ingredients
-               const ingredients = [];
+        //prepare ingredients
+        const ingredients = [];
 
-               //preprare measure
-               const measureKeys = [];
-       
-               //get all the object properties
-               const objKeys = Object.keys(responseJson.drinks[i]);
-        
-               for (let j = 0; j < objKeys.length; j++) {
-                  
-                   if (objKeys[j].includes('strIngredient') && responseJson.drinks[i][objKeys[j]] != null) {
-                       ingredients.push(responseJson.drinks[i][objKeys[j]])
-                   }
-               } 
-               console.log(ingredients);
-               for (let j = 0; j < objKeys.length; j++) {
-                  
-                if (objKeys[j].includes('strMeasure') && responseJson.drinks[i][objKeys[j]] != null) {
-                    measureKeys.push(responseJson.drinks[i][objKeys[j]])
-                }
-            } 
-            console.log(measureKeys);
+        //preprare measure
+        const measureKeys = [];
+
+        //get all the object properties
+        const objKeys = Object.keys(responseJson.drinks[i]);
+
+        for (let j = 0; j < objKeys.length; j++) {
+
+            if (objKeys[j].includes('strIngredient') && responseJson.drinks[i][objKeys[j]] != null) {
+                ingredients.push(responseJson.drinks[i][objKeys[j]])
+            }
+        }
+        console.log(ingredients);
+        for (let j = 0; j < objKeys.length; j++) {
+
+            if (objKeys[j].includes('strMeasure') && responseJson.drinks[i][objKeys[j]] != null) {
+                measureKeys.push(responseJson.drinks[i][objKeys[j]])
+            }
+        }
+        console.log(measureKeys);
         $('#results').append(
             `<div>
                 <ul class="results-list1">
@@ -90,23 +90,44 @@ function getRecipe(searchTerm) {
 
 };
 
+function displayVideos(responseJson) {
+
+    // $('#results').empty();
+
+    for (let i = 0; i < responseJson.items.length; i++) {
+        $('#results').append(
+            `<div class = "videos">
+                <ul class="result-list2">
+                    <li><h3>Full name: </h3><p class="result-header">${responseJson.items[i]}</p></li>
+                    <li><h3>Description: </h3><p>${responseJson.items[i]}</p></li>
+                    <li><h3>Website URL: </h3><a href="${responseJson.items[i]}"></a></li>
+                </ul>
+            </div>`
+        )
+    }
+
+    $('#results').removeClass('hidden');
+}
+
 //function to get youtube videos 
 function getVideos(searchTerm) {
     const params = {
         key: videoApiKey,
         part: 'snippet',
         maxResults: 5,
-        chart: 'mostPopular'
+        chart: 'mostPopular',
+        q: searchTerm,
+        type: 'video',
+        relevanceLanguage: 'en'
     };
     const queryString = formatQueryParams(params)
     const urlYoutube = videosUrl + '?' + queryString;
     console.log('delete', urlYoutube);
-   // const searchVideo = urlYoutube + searchTerm
+
     fetch(urlYoutube)
         .then(response => response.json())
-        .then(responseJson => console.log(responseJson));
+        .then(responseJson => displayVideos(responseJson));
 };
-
 
 //event listener 
 function watchForm() {

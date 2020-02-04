@@ -7,10 +7,6 @@ const newsUrl = 'https://newsapi.org/v2/everything?apiKey=4c7b0c19e9d74afe982d77
 const videosUrl = 'https://www.googleapis.com/youtube/v3/videos'
 const videoApiKey = "AIzaSyBMYHHhHGGo-bjKN9WUx1O1jMrTuDnrMkw"
 
-const allUrls = [
-];
-
-
 //function to get news related to cocktails
 function newsSection() {
     const options = {
@@ -18,7 +14,8 @@ function newsSection() {
             "X-Api-Key": newsApiKey
         })
     };
-    fetch(newsUrl, options)
+
+    fetch(newsUrl)
         .then(response => response.json())
         .then(responseJson => console.log(responseJson));
 };
@@ -36,24 +33,9 @@ function formatQueryParams(params) {
 function displayResults(responseJson) {
     responseJson.drinks.length
     $('#results').empty();
-    // const preparedData = responseJson.drinks[0].
+  
     console.log(responseJson)
     for (let i = 0; i < 5; i ++) {
-
-        // //prepare ingredients
-        // const ingKeys = [];
-
-        // //preprare measure
-        // const measureKeys = [];
-
-        // //get all the object properties
-        // const objKeys = Object.keys(responseJson.drinks[i]);
-        // for (let j = 0; j < objKeys.length; j++) {
-        //     if (objKeys[j].substring(0, 14) === 'strIngredient') {
-        //         ingKeys.push(responseJson.drinks[i]['strIngredient' + (j + 1)])
-        //     }
-           
-        // } 
 
          //prepare ingredients
                const ingredients = [];
@@ -73,8 +55,6 @@ function displayResults(responseJson) {
              
                console.log(ingredients);
 
-
-
         $('#results').append(
             `<div>
                 <ul class="results-list1">
@@ -90,9 +70,6 @@ function displayResults(responseJson) {
 
     $('#results').removeClass('hidden');
 }
-
-
-
 
 //function to get the recipe
 function getRecipe(searchTerm) {
@@ -112,7 +89,6 @@ function getRecipe(searchTerm) {
      
 };
 
-
 //function to get youtube videos 
 function getVideos(argument) {
     const params = {
@@ -130,8 +106,6 @@ function getVideos(argument) {
         .then(responseJson => console.log(responseJson));
 };
 
-
-
 //event listener 
 function watchForm() {
     $('form').submit(event => {
@@ -142,5 +116,4 @@ function watchForm() {
         getRecipe(this.searchTerm);
     });
 }
-
 $(watchForm);

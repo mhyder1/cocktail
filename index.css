@@ -4,7 +4,7 @@
   
   body {
     font-family: 'Roboto', sans-serif;
-    background-color: rgb(116, 158, 68);
+    background-color: rgba(86, 68, 158, 0.15);;
   }
   
   button, input[type="text"] {

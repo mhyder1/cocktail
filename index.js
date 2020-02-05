@@ -16,39 +16,41 @@ function newsSection() {
   };
   fetch(newsUrl, options)
     .then(response => response.json())
-    .then(responseJson => {
-      displayNews(responseJson);
-    });
+    .then(responseJson => displayNews(responseJson));
 }
 
 //function to displayNews
-function displayNews(news) {
-  let article = {}
-  Object.keys(news).forEach((key) => {
-    let data = news[key];
+function displayNews(responseJson) {
+  $("#results3").empty();
+  for (let i = 0; i < responseJson.articles.length; i++) {
+    // for each video object in the articles
+    //array, add a list item to the results
+    //list with the article title, source, author,
+    //description, and image
+    $("#results3").append(
+      `<div class="news Box">
+        <ul class = articles-box>
+      <li><h3><a href="${responseJson.articles[i].url}"target="_blank">${responseJson.articles[i].title}</a></h3>
+      <p>${responseJson.articles[i].source.name}</p>
+      <p>By ${responseJson.articles[i].author}</p>
+      <p>${responseJson.articles[i].description}</p>
+      <img src='${responseJson.articles[i].urlToImage} height ="100' width= "100">
+      </li>
+      </ul>
+      </div>`
+    );
+  }
 
-    for(let i in data) {
-      article = data[i]
-      console.log('ACCESS EACH ARTICLE IN THE ARRAY BY LOOPING THROUGH EACH OBJECT IN THE ARRAY OF 5 ARTICLES',data)
-  })
- 
-  $("#results3").append(
-    `<div>
-            <ul class="results-list3">
-              <li><h3>Cocktail Name: </h3><p>${article.title}</p></li>
-              <li><h3>Instructions: </h3><p>${article.description}</p></li>
-              <li><h4>Ingredients: </h3><p>${article.url}</p></li>
-             </ul>
-         </div>`
-  );
+  //display the results section
   $("#results3").removeClass("hidden");
 }
 
 //format the data
 function formatQueryParams(params) {
-    const queryItems = Object.keys(params)
-        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-    return queryItems.join('&');
+  const queryItems = Object.keys(params).map(
+    key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
+  );
+  return queryItems.join("&");
 }
 
 // //function display

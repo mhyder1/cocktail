@@ -19,16 +19,28 @@
 
        <form id="js-form">
             <label for="search-term">Search Cocktail</label>
-            <input type="text" name="search-term" id="js-search-term" required>
+
+            <input type="text" name="search-term" id="js-search-term" placeholder="mojito" required>
+
             <input type="submit" value="Go!">
         </form>
       
         <p id="js-error-message" class="error-message"></p>
         <section id="results" class="hidden">
-          <h2>Search results</h2>
+          <h2>Cocktail Recipes</h2>
           <ul id="results-list">
           </ul>
         </section>
+        <section id="results2" class="hidden">
+            <h2>How to make cocktails</h2>
+            <ul id="results-list2">
+            </ul>
+          </section>
+          <section id="results3" class="hidden">
+            <h2>Cocktail News</h2>
+            <ul id="results-list3">
+            </ul>
+          </section>
     </section>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="index.js"></script>

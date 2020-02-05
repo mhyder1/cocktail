@@ -1,3 +1,4 @@
+
 "use strict";
 
 const searchUrl = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
@@ -18,6 +19,7 @@ function newsSection() {
     .then(response => response.json())
     .then(responseJson => displayNews(responseJson));
 }
+
 
 // //function to displayNews
 function displayNews(responseJson) {
@@ -173,3 +175,4 @@ function watchForm() {
   });
 }
 $(watchForm);
+

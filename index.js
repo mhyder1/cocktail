@@ -1,3 +1,4 @@
+
 "use strict";
 
 const searchUrl = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
@@ -191,3 +192,4 @@ function watchForm() {
   });
 }
 $(watchForm);
+

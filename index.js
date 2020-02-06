@@ -27,7 +27,7 @@ function getNews() {
     });
 }
 
-// // //function to displayNews
+//function to display news
 function displayNews(responseJson) {
   $("#results2").empty();
   for (let i = 0; i < responseJson.articles.length; i++) {
@@ -37,14 +37,14 @@ function displayNews(responseJson) {
     //description, and image
     $("#results2").append(
       `<div class="news Box">
-        <ul class = articles-box>
-      <li><h3><a href="${responseJson.articles[i].url}"target="_blank">${responseJson.articles[i].title}</a></h3>
-      <p>${responseJson.articles[i].source.name}</p>
-      <p>By ${responseJson.articles[i].author}</p>
-      <p>${responseJson.articles[i].description}</p>
-      <img src='${responseJson.articles[i].urlToImage} height ="100' width= "100">
-      </li>
-      </ul>
+         <ul class = articles-box>
+             <li><h3><a href="${responseJson.articles[i].url}"target="_blank">${responseJson.articles[i].title}</a></h3>
+                <p>${responseJson.articles[i].source.name}</p>
+                <p>By ${responseJson.articles[i].author}</p>
+                <p>${responseJson.articles[i].description}</p>
+             <img src='${responseJson.articles[i].urlToImage} height ="100' width= "100">
+           </li>
+        </ul>
       </div>`
     );
   }
@@ -52,7 +52,7 @@ function displayNews(responseJson) {
   $("#results2").removeClass("hidden");
 }
 
-// //format the data
+//format the data
 function formatQueryParams(params) {
   const queryItems = Object.keys(params).map(
     key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
@@ -60,7 +60,7 @@ function formatQueryParams(params) {
   return queryItems.join("&");
 }
 
-// //function display recipe results
+//function display recipe results
 function displayResults(responseJson) {
   $("#results").empty();
   console.log("display results", responseJson.drinks.length);
@@ -109,7 +109,7 @@ function displayResults(responseJson) {
   $("#results").removeClass("hidden");
 }
 
-// //function to get the recipe
+//function to get the recipe
 function getRecipe(searchTerm) {
   const recipeSearch = searchUrl + searchTerm;
   console.log(recipeSearch);
@@ -126,7 +126,7 @@ function getRecipe(searchTerm) {
     });
 }
 
-// // function to display the videos
+// function to display the videos
 function displayVideos(responseJson) {
   $("#results3").empty();
   for (let item in responseJson.items) {

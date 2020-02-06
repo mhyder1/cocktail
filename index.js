@@ -9,19 +9,26 @@ const videosUrl = "https://www.googleapis.com/youtube/v3/search";
 const videoApiKey = "AIzaSyAKGQo-ob44h9u7PIs5UCx2lgkoIFVVIdw";
 
 //function to get news related to cocktails
-function newsSection() {
+function getNews() {
   const options = {
     headers: new Headers({
       "X-Api-Key": newsApiKey
     })
   };
   fetch(newsUrl, options)
-    .then(response => response.json())
-    .then(responseJson => displayNews(responseJson));
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText);
+    })
+    .then(responseJson => displayNews(responseJson))
+    .catch(err => {
+      $("#js-error-message").text(`Something went wrong: ${err.message}`);
+    });
 }
 
-
-// //function to displayNews
+//function to display news
 function displayNews(responseJson) {
   $("#results2").empty();
   for (let i = 0; i < responseJson.articles.length; i++) {
@@ -31,14 +38,14 @@ function displayNews(responseJson) {
     //description, and image
     $("#results2").append(
       `<div class="news Box">
-        <ul class = articles-box>
-      <li><h3><a href="${responseJson.articles[i].url}"target="_blank">${responseJson.articles[i].title}</a></h3>
-      <p>${responseJson.articles[i].source.name}</p>
-      <p>By ${responseJson.articles[i].author}</p>
-      <p>${responseJson.articles[i].description}</p>
-      <img src='${responseJson.articles[i].urlToImage} height ="100' width= "100">
-      </li>
-      </ul>
+         <ul class = articles-box>
+             <li><h3><a href="${responseJson.articles[i].url}"target="_blank">${responseJson.articles[i].title}</a></h3>
+                <p>${responseJson.articles[i].source.name}</p>
+                <p>By ${responseJson.articles[i].author}</p>
+                <p>${responseJson.articles[i].description}</p>
+             <img src='${responseJson.articles[i].urlToImage} height ="100' width= "100">
+           </li>
+        </ul>
       </div>`
     );
   }
@@ -54,40 +61,42 @@ function formatQueryParams(params) {
   return queryItems.join("&");
 }
 
-// //function display recipe results
+//function display recipe results
 function displayResults(responseJson) {
   $("#results").empty();
-  console.log(responseJson);
-  for (let i = 0; i < 5; i++) {
-    //prepare ingredients
-    const ingredients = [];
+  console.log("display results", responseJson.drinks.length);
+  let loopLength = 0;
+  if ((responseJson.drinks.length > 5, (loopLength = 5)))
+    for (let i = 0; i < responseJson.drinks.length; i++) {
+      //prepare ingredients
+      const ingredients = [];
 
-    //preprare measure
-    const measureKeys = [];
+      //preprare measure
+      const measureKeys = [];
 
-    //get all the object properties
-    const objKeys = Object.keys(responseJson.drinks[i]);
+      //get all the object properties
+      const objKeys = Object.keys(responseJson.drinks[i]);
 
-    for (let j = 0; j < objKeys.length; j++) {
-      if (
-        objKeys[j].includes("strIngredient") &&
-        responseJson.drinks[i][objKeys[j]] != null
-      ) {
-        ingredients.push(responseJson.drinks[i][objKeys[j]]);
+      for (let j = 0; j < objKeys.length; j++) {
+        if (
+          objKeys[j].includes("strIngredient") &&
+          responseJson.drinks[i][objKeys[j]] != null
+        ) {
+          ingredients.push(responseJson.drinks[i][objKeys[j]]);
+        }
       }
-    }
-    console.log(ingredients);
-    for (let j = 0; j < objKeys.length; j++) {
-      if (
-        objKeys[j].includes("strMeasure") &&
-        responseJson.drinks[i][objKeys[j]] != null
-      ) {
-        measureKeys.push(responseJson.drinks[i][objKeys[j]]);
+      console.log("ingredient list", ingredients);
+      for (let j = 0; j < objKeys.length; j++) {
+        if (
+          objKeys[j].includes("strMeasure") &&
+          responseJson.drinks[i][objKeys[j]] != null
+        ) {
+          measureKeys.push(responseJson.drinks[i][objKeys[j]]);
+        }
       }
-    }
-    console.log(measureKeys);
-    $("#results").append(
-      `<div>
+      console.log(measureKeys);
+      $("#results").append(
+        `<div>
           <ul class="results-list1">
             <li><h3>Cocktail Name: </h3><p>${responseJson.drinks[i].strDrink}</p></li>
               <h4>Instructions: </h3><p>${responseJson.drinks[i].strInstructions}</p>
@@ -96,12 +105,12 @@ function displayResults(responseJson) {
               <h4><p>${measureKeys}</p>
           </ul>
         </div>`
-    );
-  }
+      );
+    }
   $("#results").removeClass("hidden");
 }
 
-// //function to get the recipe
+//function to get the recipe
 function getRecipe(searchTerm) {
   const recipeSearch = searchUrl + searchTerm;
   console.log(recipeSearch);
@@ -114,7 +123,7 @@ function getRecipe(searchTerm) {
     })
     .then(responseJson => displayResults(responseJson))
     .catch(err => {
-      $("#js-error-message").text(`Something went wrong: ${err.message}`);
+      $("#js-error-message").text(`1 Something went wrong: ${err.message}`);
     });
 }
 
@@ -132,8 +141,8 @@ function displayVideos(responseJson) {
       videoLink = `https://www.youtube.com/channel/${responseJson.items[item].snippet.channelId}`;
     }
     $("#results3").append(
-      `<div class = "videobox"> 
-         <ul class = "results3"> 
+      `<div class = "videobox">
+         <ul class = "results3">
            <li class="youtube-result-item"><figure>
            <a href="${videoLink}" target="_blank"><img src="${
         responseJson.items[item].snippet.thumbnails.high.url
@@ -160,8 +169,16 @@ function getVideos(searchTerm) {
   const urlYoutube = videosUrl + "?" + queryString;
 
   fetch(urlYoutube)
-    .then(response => response.json())
-    .then(responseJson => displayVideos(responseJson));
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText);
+    })
+    .then(responseJson => displayVideos(responseJson))
+    .catch(err => {
+      $("#js-error-message").text(`Something went wrong: ${err.message}`);
+    });
 }
 
 //event listener
@@ -170,7 +187,7 @@ function watchForm() {
     event.preventDefault();
     this.searchTerm = $("#js-search-term").val();
     getVideos(this.searchTerm);
-    newsSection();
+    getNews();
     getRecipe(this.searchTerm);
   });
 }

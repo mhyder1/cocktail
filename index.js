@@ -1,4 +1,3 @@
-
 "use strict";
 
 const searchUrl = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
@@ -98,11 +97,11 @@ function displayResults(responseJson) {
       $("#results").append(
         `<div>
           <ul class="results-list1">
-            <li><h3>Cocktail Name: </h3><p>${responseJson.drinks[i].strDrink}</p></li>
-              <h4>Instructions: </h3><p>${responseJson.drinks[i].strInstructions}</p>
+            <li><h3>${responseJson.drinks[i].strDrink}</h3></li>
               <img src="${responseJson.drinks[i].strDrinkThumb}" height="100" width="100" alt= "picture of a cocktail">
               <h4>Ingredients: </h3><p>${ingredients}</p>
-              <h4><p>${measureKeys}</p>
+              <p>${measureKeys}</p>
+              <h4>Instructions: </h3><p>${responseJson.drinks[i].strInstructions}</p>
           </ul>
         </div>`
       );
@@ -161,7 +160,7 @@ function getVideos(searchTerm) {
   const params = {
     part: "snippet",
     maxResults: 5,
-    q: `${"How to Make"}` + searchTerm,
+    q: `${"How to make a cocktail"}` + searchTerm,
     relevanceLanguage: "en",
     key: videoApiKey
   };
@@ -192,4 +191,3 @@ function watchForm() {
   });
 }
 $(watchForm);
-

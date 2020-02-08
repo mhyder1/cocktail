@@ -29,18 +29,14 @@ function getNews() {
 
 //function to display news
 function displayNews(responseJson) {
-  $("#results2").empty();
+  $("#results3").empty();
   for (let i = 0; i < responseJson.articles.length; i++) {
-    // for each video object in the articles
-    //array, add a list item to the results
-    //list with the article title, source, author,
-    //description, and image
-    $("#results2").append(
+    $("#results3").append(
       `<div class="newsBox">
-         <ul class = articles-box>
-             <li><h3><a href="${responseJson.articles[i].url}"target="_blank">${responseJson.articles[i].title}</a></h3>
-                <p>${responseJson.articles[i].source.name}</p>
-                <p>By ${responseJson.articles[i].author}</p>
+         <ul class = nResults>
+             <li><h4><a href="${responseJson.articles[i].url}"target="_blank">${responseJson.articles[i].title}</a></h4>
+                <p class = "lineh">${responseJson.articles[i].source.name}</p>
+                <p class= "lineh">By ${responseJson.articles[i].author}</p>
                 <p>${responseJson.articles[i].description}</p>
              <img src='${responseJson.articles[i].urlToImage} height ="100' width= "100">
            </li>
@@ -96,7 +92,7 @@ function displayResults(responseJson) {
     console.log(measureKeys);
     $("#results").append(
       `<div class="recipeBox">
-          <ul class="results-list1">
+          <ul class="rResults">
             <li><h3>${responseJson.drinks[i].strDrink}</h3></li>
               <img src="${responseJson.drinks[i].strDrinkThumb}" height="100" width="100" alt= "picture of a cocktail">
               <div class = "ingredientContainer"></div>
@@ -131,7 +127,7 @@ function getRecipe(searchTerm) {
 
 // function to display the videos
 function displayVideos(responseJson) {
-  $("#results3").empty();
+  $("#results2").empty();
   for (let item in responseJson.items) {
     let videoLink = "";
     let videoTitle = responseJson.items[item].snippet.title;
@@ -142,13 +138,15 @@ function displayVideos(responseJson) {
     } else {
       videoLink = `https://www.youtube.com/channel/${responseJson.items[item].snippet.channelId}`;
     }
-    $("#results3").append(
-      `<div class = "videoBox">
-         <ul class = "results3">
-           <li class="youtube-result-item"><figure>
+
+    $("#results2").append(
+      `<div class = "videoBox" id= "gradient1">
+         <ul class = "vResults">
+           <li class="video-result">
+           <figure>
            <a href="${videoLink}" target="_blank"><img src="${
         responseJson.items[item].snippet.thumbnails.high.url
-      }" alt="${responseJson.items[item].snippet.title}" /></a>
+      }" id= "pic" alt="${responseJson.items[item].snippet.title}" /></a>
            <figcaption>${videoTitle.toLowerCase()}</figcaption>
            </figure></li>
         </ul>

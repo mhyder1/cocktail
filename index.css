@@ -16,17 +16,23 @@ body {
   line-height: 1.6;
 }
 
-#gradient {
+#gradient,
+#gradient1 {
   height: auto;
   width: 100%;
   background-color: red;
-  background-image: radial-gradient(rgb(245, 241, 243), #f9f8f4);
+  background-image: radial-gradient(#fff, rgb(146, 7, 79));
 }
 
 header {
   display: flex;
   justify-content: center;
   cursor: pointer;
+  color: rgb(247, 245, 243);
+}
+
+header > p {
+  margin-left: 10px;
 }
 button,
 input[type="text"] {
@@ -42,12 +48,68 @@ button:hover {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
 .error-message {
   color: rgb(211, 4, 4);
+}
+
+ul {
+  list-style: none;
+}
+.videoBox {
+  /* background-image: linear-gradient(#ab084e, #fcf8fa); */
+  background-repeat: no-repeat;
+  /* background-color: #a21b5a; */
+  background-position: center;
+  background-size: auto;
+  box-shadow: 3px 5px 6px rgb(48, 47, 47);
+  border-radius: 5px;
+}
+
+ul.rResults,
+ul.vResults,
+ul.nResults {
+  padding: 0;
+}
+
+ul.rResults,
+ul.nResults {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* ul.nResults {
+  line-height: 22px;
+} */
+.nResults-li > h4,
+.lineh {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 20px;
+}
+
+figure {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+#pic,
+figcaption {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+}
+figcaption {
+  padding: 5px;
+  font-size: 14px;
+  color: rgb(5, 5, 5);
+  font-weight: bold;
+  border-radius: 6px;
 }
 
 footer {

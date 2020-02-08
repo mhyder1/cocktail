@@ -9,32 +9,37 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <header class="page-header sticky">
-      <h1 class="text-center me"><strong>COCKTAILS</strong></h1>
+    <header class="page-header sticky" id="gradient">
+      <h1 class="text-center me"><strong>COCKTAIL</strong></h1>
       <p>Get The Best Cocktail Recipes</p>
     </header>
-    <section class="container">
-      <h1></h1>
+    <main class="container">
+      <section class="cwrap">
+        <section class="welcome">
+          <article id="search-term">
+            <form id="js-form">
+              <label for="search-term">Search Cocktail</label>
+              <input
+                type="text"
+                name="search-term"
+                id="js-search-term"
+                placeholder="Mojito, Gin e.g."
+                required
+              />
+              <input type="submit" value="Go!" />
+            </form>
+          </article>
+        </section>
 
-      <form id="js-form">
-        <label for="search-term">Search Cocktail</label>
+        <p id="js-error-message" class="error-message"></p>
 
-        <input
-          type="text"
-          name="search-term"
-          id="js-search-term"
-          placeholder="Mojito, Gin e.g."
-          required
-        />
-
-        <input type="submit" value="Go!" />
-      </form>
-
-      <p id="js-error-message" class="error-message"></p>
-      <section id="results" class="hidden"></section>
-      <section id="results2" class="hidden"></section>
-      <section id="results3" class="hidden"></section>
-    </section>
+        <section id="show-results">
+          <section id="results"></section>
+          <section id="results2"></section>
+          <section id="results3"></section>
+        </section>
+      </section>
+    </main>
     <footer class="copyText">
       <small>&copy; 2019 Anar Chalk </small>
     </footer>

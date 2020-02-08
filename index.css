@@ -1,29 +1,58 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Roboto', sans-serif;
-    background-color: rgba(86, 68, 158, 0.15);;
-  }
-  
-  button, input[type="text"] {
-    padding: 5px;
-  }
-  
-  button:hover {
-    cursor: pointer;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .error-message {
-      color: red;
-  }
-  
-  .hidden {
-    display: none;
-  }
+/* For mobile phones: */
+html,
+body {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Josefin Slab", serif;
+  line-height: 1.6;
+}
+
+#gradient {
+  height: auto;
+  width: 100%;
+  background-color: red;
+  background-image: radial-gradient(rgb(245, 241, 243), #f9f8f4);
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+button,
+input[type="text"] {
+  padding: 5px;
+}
+
+.ingredientContainer > p {
+  margin: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.error-message {
+  color: rgb(211, 4, 4);
+}
+
+footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}

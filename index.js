@@ -37,15 +37,13 @@ function displayNews(responseJson) {
              <li><h4><a href="${responseJson.articles[i].url}"target="_blank">${responseJson.articles[i].title}</a></h4>
                 <p class = "lineh">${responseJson.articles[i].source.name}</p>
                 <p class= "lineh">By ${responseJson.articles[i].author}</p>
-                <p>${responseJson.articles[i].description}</p>
-             
+                <p><img src='${responseJson.articles[i].urlToImage}' id="imgart" height ="100" width= "100">${responseJson.articles[i].description}</p>
            </li>
         </ul>
       </div>`
     );
   }
 }
-//<img src='${responseJson.articles[i].urlToImage} height ="100' width= "100">
 
 //format the data
 function formatQueryParams(params) {

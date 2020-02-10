@@ -74,6 +74,12 @@ h3 {
   justify-content: center;
 }
 
+#imgart {
+  float: left;
+  margin-right: 15px;
+  height: auto;
+}
+
 p,
 a {
   line-height: 22px;
@@ -157,7 +163,7 @@ figure {
 figcaption {
   display: block;
   margin: 0 auto;
-  width: 65%;
+  width: 75%;
   height: auto;
   border-radius: 6px;
 }
@@ -181,6 +187,10 @@ footer {
 
 /* tablets: */
 @media only screen and (min-width: 768px) {
+  body {
+    background: url(img/landscape.jpg) no-repeat center fixed;
+    background-size: cover;
+  }
   .col1 {
     display: flex;
   }

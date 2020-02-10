@@ -186,11 +186,18 @@ function getVideos(searchTerm) {
 }
 
 //function to back to home
-$(document).on("click", ".text-center", function() {
+// $(document).on("click", ".text-center", function() {
+//   event.preventDefault();
+//   $(".welcome").show();
+//   $("#show-results").hide();
+// });
+
+$(".text-center").click(function() {
   event.preventDefault();
   $(".welcome").show();
   $("#show-results").hide();
 });
+
 
 //event listener
 function watchForm() {
@@ -198,6 +205,9 @@ function watchForm() {
     event.preventDefault();
     this.searchTerm = $("#js-search-term").val();
     $("#show-results").show();
+    $(".jor").show();
+    $(".bich").show();
+    $(".med").show();
     $(".welcome").hide();
     getVideos(this.searchTerm);
     getNews();

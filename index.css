@@ -52,6 +52,12 @@ input[type="submit"] {
   font-weight: bolder;
 }
 
+.jor, .bich, .med {
+display: none;
+font-size: 22px;
+color:#fff;
+}
+
 input[type="submit"] {
   font-size: 18px;
 }
@@ -127,7 +133,7 @@ ul {
   box-shadow: 3px 5px 6px rgb(48, 47, 47);
   color:black;
   border-radius: 5px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   opacity: 0.8;
 }
 

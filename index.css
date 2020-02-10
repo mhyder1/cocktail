@@ -13,16 +13,16 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "Quattrocento Sans", sans-serif;
-  line-height: 1.6;
+  */line-height: 1.6;
 }
 
 #gradient {
-  /* #gradient1  */
   height: auto;
   width: 100%;
   background-color: rgb(2, 85, 84);
   background-image: radial-gradient(#7be7e7, #0640d3);
 }
+
 /* #5f0541 */
 body {
   background: url(img/dr.jpeg) no-repeat center fixed;
@@ -32,7 +32,7 @@ body {
 header {
   display: flex;
   justify-content: center;
-  font-family: "Rajdhani", sans-serif;
+  /* font-family: "Rajdhani", sans-serif; */
   cursor: pointer;
   color: rgb(245, 244, 238);
 }
@@ -40,6 +40,7 @@ header {
 header > p {
   margin-left: 10px;
 }
+
 button,
 input[type="text"] {
   padding: 5px;
@@ -55,8 +56,30 @@ input[type="submit"] {
   font-size: 18px;
 }
 
+/* #gradient1 {
+  height: auto;
+  width: 100%;
+  background-color: rgb(2, 85, 84);
+  background-image: radial-gradient(#f9fcfc, #03678b);
+} */
+
+li {
+  padding-top: 2px;
+  padding-bottom: 3px;
+}
 .ingredientContainer > p {
   margin: 0;
+}
+h3 {
+  display: flex;
+  justify-content: center;
+}
+
+p,
+a {
+  line-height: 22px;
+  word-spacing: 2px;
+  letter-spacing: 0.6px;
 }
 
 button:hover {
@@ -68,11 +91,11 @@ button:hover {
   margin: 0 auto;
 }
 #imgingr {
-display: flex;
+  display: flex;
 }
 
 #drinkpic {
-  
+  margin-right: 15px;
 }
 
 .error-message {
@@ -93,18 +116,10 @@ ul {
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto;
-  background-color: #fff;
+  background-color: rgb(252, 251, 249);
   box-shadow: 3px 5px 6px rgb(48, 47, 47);
   border-radius: 5px;
 }
-/* {
-  background-repeat: no-repeat;
-  
-  background-position: center;
-  background-size: auto;
-  box-shadow: 3px 5px 6px rgb(92, 91, 91);
-  border-radius: 5px;
-} */
 
 ul.rResults,
 ul.vResults,
@@ -118,9 +133,6 @@ ul.nResults {
   margin-right: 10px;
 }
 
-/* ul.nResults {
-  line-height: 22px;
-} */
 .nResults-li > h4,
 .lineh {
   margin-top: 0;
@@ -140,13 +152,16 @@ figcaption {
   margin: 0 auto;
   width: 100%;
   height: auto;
+  border-radius: 6px;
 }
+
 figcaption {
   padding: 5px;
   font-size: 14px;
   color: rgb(3, 3, 3);
   font-weight: bold;
   border-radius: 6px;
+  margin-top: 5px;
 }
 
 footer {

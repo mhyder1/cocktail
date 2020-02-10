@@ -56,7 +56,7 @@ function formatQueryParams(params) {
 //function display recipe results
 function displayResults(responseJson) {
   $("#results").empty();
-  console.log("display results", responseJson.drinks.length);
+  //console.log("display results", responseJson.drinks.length);
   const ingredientMeasures = {};
   for (let i = 0; i < responseJson.drinks.length && i < 5; i++) {
     //prepare ingredients
@@ -76,7 +76,7 @@ function displayResults(responseJson) {
         ingredients.push(responseJson.drinks[i][objKeys[j]]);
       }
     }
-    console.log("ingredient list", ingredients);
+   // console.log("ingredient list", ingredients);
     for (let z = 0; z < objKeys.length; z++) {
       if (
         objKeys[z].includes("strMeasure") &&
@@ -86,7 +86,7 @@ function displayResults(responseJson) {
       }
       ingredientMeasures[ingredients[i]] = [measureKeys[i]];
     }
-    console.log(ingredients);
+   // console.log(ingredients);
 
     $("#results").append(
       `<div class="recipeBox">
@@ -113,7 +113,7 @@ function displayResults(responseJson) {
 //function to get the recipe
 function getRecipe(searchTerm) {
   const recipeSearch = searchUrl + searchTerm;
-  console.log(recipeSearch);
+ // console.log(recipeSearch);
   fetch(recipeSearch)
     .then(response => {
       if (response.ok) {

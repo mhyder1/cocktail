@@ -12,23 +12,29 @@ main {
 body {
   display: flex;
   flex-direction: column;
-  font-family: "Josefin Slab", serif;
+  font-family: "Quattrocento Sans", sans-serif;
   line-height: 1.6;
 }
 
-#gradient,
-#gradient1 {
+#gradient {
+  /* #gradient1  */
   height: auto;
   width: 100%;
-  background-color: red;
-  background-image: radial-gradient(#fff, rgb(146, 7, 79));
+  background-color: rgb(2, 85, 84);
+  background-image: radial-gradient(#7be7e7, #0640d3);
+}
+/* #5f0541 */
+body {
+  background: url(img/dr.jpeg) no-repeat center fixed;
+  background-size: cover;
 }
 
 header {
   display: flex;
   justify-content: center;
+  font-family: "Rajdhani", sans-serif;
   cursor: pointer;
-  color: rgb(247, 245, 243);
+  color: rgb(245, 244, 238);
 }
 
 header > p {
@@ -37,6 +43,16 @@ header > p {
 button,
 input[type="text"] {
   padding: 5px;
+}
+
+label,
+input[type="submit"] {
+  color: white;
+  font-weight: bolder;
+}
+
+input[type="submit"] {
+  font-size: 18px;
 }
 
 .ingredientContainer > p {
@@ -51,23 +67,44 @@ button:hover {
   max-width: 100%;
   margin: 0 auto;
 }
+#imgingr {
+display: flex;
+}
+
+#drinkpic {
+  
+}
 
 .error-message {
   color: rgb(211, 4, 4);
 }
 
+#search-term {
+  margin-top: 40px;
+  border-radius: 5px;
+}
+
 ul {
   list-style: none;
 }
-.videoBox {
-  /* background-image: linear-gradient(#ab084e, #fcf8fa); */
+.videoBox,
+.recipeBox,
+#results3 {
   background-repeat: no-repeat;
-  /* background-color: #a21b5a; */
   background-position: center;
   background-size: auto;
+  background-color: #fff;
   box-shadow: 3px 5px 6px rgb(48, 47, 47);
   border-radius: 5px;
 }
+/* {
+  background-repeat: no-repeat;
+  
+  background-position: center;
+  background-size: auto;
+  box-shadow: 3px 5px 6px rgb(92, 91, 91);
+  border-radius: 5px;
+} */
 
 ul.rResults,
 ul.vResults,
@@ -107,7 +144,7 @@ figcaption {
 figcaption {
   padding: 5px;
   font-size: 14px;
-  color: rgb(5, 5, 5);
+  color: rgb(3, 3, 3);
   font-weight: bold;
   border-radius: 6px;
 }
@@ -117,4 +154,5 @@ footer {
   display: flex;
   justify-content: center;
   margin-top: 30px;
+  color: #fff;
 }

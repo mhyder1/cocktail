@@ -64,7 +64,7 @@ function displayResults(responseJson) {
   for (let i = 0; i < responseJson.drinks.length && i < 5; i++) {
     //prepare ingredients
     const ingredients = [];
-
+    //console.log(ingredients.length);
     //preprare measure
     const measureKeys = [];
 
@@ -80,31 +80,36 @@ function displayResults(responseJson) {
       }
     }
     console.log("ingredient list", ingredients);
-    for (let j = 0; j < objKeys.length; j++) {
+    for (let z = 0; z < objKeys.length; z++) {
       if (
-        objKeys[j].includes("strMeasure") &&
-        responseJson.drinks[i][objKeys[j]] != null
+        objKeys[z].includes("strMeasure") &&
+        responseJson.drinks[i][objKeys[z]] != null
       ) {
-        measureKeys.push(responseJson.drinks[i][objKeys[j]]);
+        measureKeys.push(responseJson.drinks[i][objKeys[z]]);
       }
       ingredientMeasures[ingredients[i]] = [measureKeys[i]];
     }
-    console.log(measureKeys);
+    console.log(ingredients);
+
     $("#results").append(
       `<div class="recipeBox">
           <ul class="rResults">
-            <li><h3>${responseJson.drinks[i].strDrink}</h3></li>
-              <img src="${responseJson.drinks[i].strDrinkThumb}" height="100" width="100" alt= "picture of a cocktail">
-              <div class = "ingredientContainer"></div>
-              <h4>Instructions: </h3><p>${responseJson.drinks[i].strInstructions}</p>
+            <li><h3>${responseJson.drinks[i].strDrink}</h3>
+             <div id="imgingr"><img src="${responseJson.drinks[i].strDrinkThumb}" id="drinkpic" height="100" width="100" alt="picture of a cocktail">
+              <div class="ingredientContainer"></div> 
+              </div>
+              <h4>Instructions: </h4><p>${responseJson.drinks[i].strInstructions}</p></li>
           </ul>
         </div>`
     );
-    for (let i = 0; i < ingredients.length; i++) {
-      $(".ingredientContainer").append(
-        `<p><span>${ingredients[i]}</span> : <span>${measureKeys[i]}</span></p>`
+
+    for (let k = 0; k < ingredients.length; k++) {
+      $("#results div:last-child .ingredientContainer").append(
+        `<p><span>${ingredients[k]}</span> : <span>${measureKeys[k]}</span></p>`
       );
+      //console.log("checking", ingredients[k]);
     }
+    //console.log($(".ingredientContainer"));
   }
 }
 

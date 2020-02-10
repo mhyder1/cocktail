@@ -3,7 +3,7 @@
 const searchUrl = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 const newsApiKey = "4c7b0c19e9d74afe982d773604074e2f";
 const newsUrl =
-  "https://newsapi.org/v2/everything?q=cocktails&language=en&pageSize=5";
+  "https://newsapi.org/v2/everything?q=cocktail&language=en&pageSize=5";
 const videosUrl = "https://www.googleapis.com/youtube/v3/search";
 const videoApiKey = "AIzaSyDC3Jc6WGTo6r0vf7VlkzVnm25GZPpy5UI";
 
@@ -38,15 +38,14 @@ function displayNews(responseJson) {
                 <p class = "lineh">${responseJson.articles[i].source.name}</p>
                 <p class= "lineh">By ${responseJson.articles[i].author}</p>
                 <p>${responseJson.articles[i].description}</p>
-             <img src='${responseJson.articles[i].urlToImage} height ="100' width= "100">
+             
            </li>
         </ul>
       </div>`
     );
   }
-  //display the results section
-  //$("#results2").removeClass("hidden");
 }
+//<img src='${responseJson.articles[i].urlToImage} height ="100' width= "100">
 
 //format the data
 function formatQueryParams(params) {
@@ -185,19 +184,12 @@ function getVideos(searchTerm) {
     });
 }
 
-//function to back to home
-// $(document).on("click", ".text-center", function() {
-//   event.preventDefault();
-//   $(".welcome").show();
-//   $("#show-results").hide();
-// });
-
+//function to search page
 $(".text-center").click(function() {
   event.preventDefault();
   $(".welcome").show();
   $("#show-results").hide();
 });
-
 
 //event listener
 function watchForm() {

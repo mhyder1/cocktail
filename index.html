@@ -34,7 +34,7 @@
                 placeholder="Mojito, Gin e.g."
                 required
               />
-              <input type="submit" value="Go!" />
+              <input type="submit" id="go" value="Go!" />
             </form>
           </article>
         </section>
@@ -42,10 +42,14 @@
         <p id="js-error-message" class="error-message"></p>
 
         <section id="show-results">
-          <div class="jor">Recipes</div>
-          <section id="results"></section>
-          <div class="bich">Videos</div>
-          <section id="results2"></section>
+          <div class="col1">
+            <div class="jor">Recipes</div>
+            <section id="results"></section>
+            <div class="subcol">
+            <div class="bich">Videos</div>
+            <section id="results2"></section>
+          </div>
+          </div>
           <div class="med">Articles</div>
           <section id="results3"></section>
         </section>
@@ -59,6 +63,6 @@
       integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
       crossorigin="anonymous"
     ></script>
-    <script src="index.js"></script>
+    <script src="index.js?id=123123123"></script>
   </body>
 </html>

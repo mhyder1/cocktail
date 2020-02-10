@@ -34,7 +34,7 @@ header {
   justify-content: center;
   /* font-family: "Rajdhani", sans-serif; */
   cursor: pointer;
-  color: rgb(245, 244, 238);
+  color: #fff;
 }
 
 header > p {
@@ -116,7 +116,7 @@ ul {
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto;
-  background-color: rgb(252, 251, 249);
+  background-color: rgb(254, 254, 254);
   box-shadow: 3px 5px 6px rgb(48, 47, 47);
   border-radius: 5px;
 }
@@ -171,3 +171,8 @@ footer {
   margin-top: 30px;
   color: #fff;
 }
+
+@media only screen and (min-width: 414px) {
+  /* bigger phones: */
+
+  

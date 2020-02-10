@@ -105,7 +105,7 @@ function displayResults(responseJson) {
 
     for (let k = 0; k < ingredients.length; k++) {
       $("#results div:last-child .ingredientContainer").append(
-        `<p><span>${ingredients[k]}</span> : <span>${measureKeys[k]}</span></p>`
+        `<p><span>${ingredients[k]}</span>: <span>${measureKeys[k]}</span></p>`
       );
       //console.log("checking", ingredients[k]);
     }

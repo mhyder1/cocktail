@@ -13,7 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "Quattrocento Sans", sans-serif;
-  */line-height: 1.6;
+  line-height: 1.6;
 }
 
 #gradient {
@@ -111,14 +111,24 @@ ul {
   list-style: none;
 }
 .videoBox,
-.recipeBox,
-#results3 {
+.recipeBox {
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto;
   background-color: rgb(254, 254, 254);
   box-shadow: 3px 5px 6px rgb(48, 47, 47);
   border-radius: 5px;
+}
+#results3 {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  background-color: #ffffff;
+  box-shadow: 3px 5px 6px rgb(48, 47, 47);
+  color:black;
+  border-radius: 5px;
+  border: 1px solid black;
+  opacity: 0.8;
 }
 
 ul.rResults,

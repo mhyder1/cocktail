@@ -5,7 +5,7 @@ const newsApiKey = "4c7b0c19e9d74afe982d773604074e2f";
 const newsUrl =
   "https://newsapi.org/v2/everything?q=cocktail&language=en&pageSize=5";
 const videosUrl = "https://www.googleapis.com/youtube/v3/search";
-const videoApiKey = "AIzaSyDC3Jc6WGTo6r0vf7VlkzVnm25GZPpy5UI";
+const videoApiKey = "AIzaSyB6QtgN1Zi51v40bnNs7UyBjxDhgT70Zo0";
 
 //function to get news related to cocktails
 function getNews() {

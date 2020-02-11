@@ -39,16 +39,17 @@ header > p {
   margin-left: 10px;
 }
 
-button,
-input[type="text"] {
-  padding: 5px;
-}
-
-label,
-#go {
+label {
   color: white;
   font-weight: bolder;
 }
+
+input[type="text"] {
+  padding: 5px;
+  background-color: rgb(253, 245, 236);
+  border-radius: 5px;
+}
+
 #myBtn {
   display: none;
   position: fixed;
@@ -69,6 +70,12 @@ label,
 #myBtn:hover {
   background-color: rgb(31, 72, 75);
 }
+
+#go:hover {
+  background-color: rgb(31, 72, 75);
+  cursor: pointer;
+}
+
 .jor,
 .bich,
 .med {
@@ -78,7 +85,23 @@ label,
 }
 
 input[type="submit"] {
-  font-size: 18px;
+  font-size: 15px;
+  background-color: rgb(115, 194, 194);
+  border-radius: 5px;
+  color: #fff;
+  box-shadow: 3px 1px 3px;
+}
+
+#logo,
+.hello {
+  font-family: "Petit Formal Script", cursive;
+  margin-left: 20px;
+}
+
+.hello {
+  font-size: 13px;
+  color: whitesmoke;
+  /* margin-bottom: 100px; */
 }
 
 li {
@@ -104,10 +127,6 @@ a {
   line-height: 22px;
   word-spacing: 2px;
   letter-spacing: 0.6px;
-}
-
-button:hover {
-  cursor: pointer;
 }
 
 .container {
@@ -237,7 +256,9 @@ footer {
   .med {
     font-size: 22px;
   }
-
+  .hello {
+    font-size: 18px;
+  }
   #results {
     position: relative;
     margin-top: 35px;

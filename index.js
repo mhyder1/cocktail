@@ -37,7 +37,7 @@ function displayNews(responseJson) {
              <li><h4><a href="${responseJson.articles[i].url}"target="_blank">${responseJson.articles[i].title}</a></h4>
                 <p class = "lineh">${responseJson.articles[i].source.name}</p>
                 <p class= "lineh">By ${responseJson.articles[i].author}</p>
-                <p><img src='${responseJson.articles[i].urlToImage}' id="imgart" height ="100" width= "100">${responseJson.articles[i].description}</p>
+                <p><img src='${responseJson.articles[i].urlToImage}' id="imgart" alt="${responseJson.articles[i].title}" height ="100" width= "100">${responseJson.articles[i].description}</p>
            </li>
         </ul>
       </div>`
@@ -76,7 +76,7 @@ function displayResults(responseJson) {
         ingredients.push(responseJson.drinks[i][objKeys[j]]);
       }
     }
-   // console.log("ingredient list", ingredients);
+    // console.log("ingredient list", ingredients);
     for (let z = 0; z < objKeys.length; z++) {
       if (
         objKeys[z].includes("strMeasure") &&
@@ -86,13 +86,13 @@ function displayResults(responseJson) {
       }
       ingredientMeasures[ingredients[i]] = [measureKeys[i]];
     }
-   // console.log(ingredients);
+    // console.log(ingredients);
 
     $("#results").append(
       `<div class="recipeBox">
           <ul class="rResults">
             <li><h3>${responseJson.drinks[i].strDrink}</h3>
-             <div id="imgingr"><img src="${responseJson.drinks[i].strDrinkThumb}" id="drinkpic" height="100" width="100" alt="picture of a cocktail">
+             <div id="imgingr"><img src="${responseJson.drinks[i].strDrinkThumb}" id="drinkpic" height="100" width="100" alt="responseJson.drinks[i].strDrink">
               <div class="ingredientContainer"></div> 
               </div>
               <h4>Instructions: </h4><p>${responseJson.drinks[i].strInstructions}</p></li>
@@ -113,7 +113,7 @@ function displayResults(responseJson) {
 //function to get the recipe
 function getRecipe(searchTerm) {
   const recipeSearch = searchUrl + searchTerm;
- // console.log(recipeSearch);
+  // console.log(recipeSearch);
   fetch(recipeSearch)
     .then(response => {
       if (response.ok) {
@@ -182,12 +182,6 @@ function getVideos(searchTerm) {
     });
 }
 
-//function to search page
-$(".text-center").click(function() {
-  event.preventDefault();
-  $(".welcome").show();
-  $("#show-results").hide();
-});
 //Get the button
 const mybutton = document.getElementById("myBtn");
 
@@ -223,6 +217,11 @@ function watchForm() {
     getVideos(this.searchTerm);
     getNews();
     getRecipe(this.searchTerm);
+    $(".text-center").click(function() {
+      event.preventDefault();
+      $(".welcome").show();
+      $("#show-results").hide();
+    });
     $("#js-form")[0].reset();
   });
 }

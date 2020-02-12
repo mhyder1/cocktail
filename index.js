@@ -213,7 +213,6 @@ function watchForm() {
     $(".jor").show();
     $(".bich").show();
     $(".med").show();
-    $(".welcome").hide();
     getVideos(this.searchTerm);
     getNews();
     getRecipe(this.searchTerm);

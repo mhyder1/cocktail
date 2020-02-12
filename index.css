@@ -101,7 +101,6 @@ input[type="submit"] {
 .hello {
   font-size: 13px;
   color: whitesmoke;
-  /* margin-bottom: 100px; */
 }
 
 li {
@@ -237,12 +236,7 @@ footer {
     font-size: larger;
     padding: 10px;
   }
-  #go {
-    background-color: rgb(248, 251, 252);
-    padding: 2px 4px;
-    border-radius: 6px;
-    color: rgb(2, 99, 173);
-  }
+
   input[type="text"] {
     padding: 4px;
     font-size: medium;

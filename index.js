@@ -31,7 +31,6 @@ function getNews() {
 
 //function to display news
 function displayNews(responseJson) {
-  console.log("test");
   $("#results3").empty();
   for (let i = 0; i < responseJson.articles.length; i++) {
     $("#results3").append(
@@ -58,6 +57,12 @@ function formatQueryParams(params) {
 
 //function display recipe results
 function displayResults(responseJson) {
+  if (responseJson.drinks === null) {
+    return $("#js-error-message").text(
+      "No matches found. Please try searching again."
+    ) 
+  }
+
   $("#results").empty();
   //console.log("display results", responseJson.drinks.length);
   const ingredientMeasures = {};

@@ -31,6 +31,7 @@ function getNews() {
 
 //function to display news
 function displayNews(responseJson) {
+  console.log("test");
   $("#results3").empty();
   for (let i = 0; i < responseJson.articles.length; i++) {
     $("#results3").append(

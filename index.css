@@ -153,6 +153,8 @@ a {
 
 .error-message {
   color: rgb(211, 4, 4);
+  background: white;
+  width: fit-content;
 }
 
 #search-term {

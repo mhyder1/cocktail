@@ -94,7 +94,7 @@ function displayResults(responseJson) {
       `<div class="recipeBox">
           <ul class="rResults">
             <li><h3>${responseJson.drinks[i].strDrink}</h3>
-             <div id="imgingr"><img src="${responseJson.drinks[i].strDrinkThumb}" id="drinkpic" height="100" width="100" alt="responseJson.drinks[i].strDrink">
+             <div id="imgingr"><img src="${responseJson.drinks[i].strDrinkThumb}" id="drinkpic" height="100" width="100" alt="${responseJson.drinks[i].strDrink}">
               <div class="ingredientContainer"></div> 
               </div>
               <h4>Instructions: </h4><p>${responseJson.drinks[i].strInstructions}</p></li>
@@ -184,7 +184,7 @@ function getVideos(searchTerm) {
     .catch(err => {
       $("#js-error-message").text(
         `No matches found. Please try searching again: ${err.message}`
-      )
+      );
     });
 }
 

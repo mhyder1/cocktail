@@ -23,7 +23,9 @@ function getNews() {
     })
     .then(responseJson => displayNews(responseJson))
     .catch(err => {
-      $("#js-error-message").text(`Something went wrong: ${err.message}`);
+      $("#js-error-message").text(
+        `Something went wrong, Please try again: ${err.message}`
+      );
     });
 }
 
@@ -123,7 +125,9 @@ function getRecipe(searchTerm) {
     })
     .then(responseJson => displayResults(responseJson))
     .catch(err => {
-      $("#js-error-message").text(`1 Something went wrong: ${err.message}`);
+      $("#js-error-message").text(
+        `No matches found. Please try searching again: ${err.message}`
+      );
     });
 }
 
@@ -178,7 +182,9 @@ function getVideos(searchTerm) {
     })
     .then(responseJson => displayVideos(responseJson))
     .catch(err => {
-      $("#js-error-message").text(`2 Something went wrong: ${err.message}`);
+      $("#js-error-message").text(
+        `No matches found. Please try searching again: ${err.message}`
+      )
     });
 }
 

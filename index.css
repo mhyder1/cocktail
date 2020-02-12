@@ -201,12 +201,6 @@ ul.nResults {
   line-height: 20px;
 }
 
-figure {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-
 #pic,
 figcaption {
   display: block;
@@ -214,6 +208,15 @@ figcaption {
   width: 75%;
   height: auto;
   border-radius: 6px;
+}
+
+figcaption {
+  padding: 5px;
+  font-size: 14px;
+  color: rgb(3, 3, 3);
+  font-weight: bold;
+  border-radius: 6px;
+  margin-top: 5px;
 }
 
 figcaption {

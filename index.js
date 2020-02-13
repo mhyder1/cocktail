@@ -5,7 +5,7 @@ const newsApiKey = "4c7b0c19e9d74afe982d773604074e2f";
 const newsUrl =
   "https://newsapi.org/v2/everything?q=cocktail&language=en&pageSize=5";
 const videosUrl = "https://www.googleapis.com/youtube/v3/search";
-const videoApiKey = "AIzaSyB6QtgN1Zi51v40bnNs7UyBjxDhgT70Zo0";
+const videoApiKey = "AIzaSyAGGmlNEZmU62hPNCtYyjR2FXBQaE63wgQ";
 
 //function to get news related to cocktails
 function getNews() {
@@ -172,7 +172,7 @@ function getVideos(searchTerm) {
   const params = {
     part: "snippet",
     maxResults: 5,
-    q: `How to make a cocktail - ${searchTerm}`,
+    q: `${"How to make a cocktail"}` + searchTerm,
     relevanceLanguage: "en",
     key: videoApiKey
   };

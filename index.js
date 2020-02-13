@@ -60,7 +60,7 @@ function displayResults(responseJson) {
   if (responseJson.drinks === null) {
     return $("#js-error-message").text(
       "No matches found. Please try searching again."
-    ) 
+    );
   }
 
   $("#results").empty();
@@ -172,7 +172,7 @@ function getVideos(searchTerm) {
   const params = {
     part: "snippet",
     maxResults: 5,
-    q: `${"How to make a cocktail"}` + searchTerm,
+    q: `How to make a cocktail - ${searchTerm}`,
     relevanceLanguage: "en",
     key: videoApiKey
   };
@@ -220,6 +220,7 @@ function topFunction() {
 function watchForm() {
   $("form").submit(event => {
     event.preventDefault();
+    $("#js-error-message").text("");
     this.searchTerm = $("#js-search-term").val();
     $("#show-results").show();
     $(".jor").show();

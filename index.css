@@ -84,7 +84,7 @@ input[type="text"] {
   width: fit-content;
   background: radial-gradient(rgb(42, 13, 13, 1), rgb(42, 13, 13, 0.5));
   padding: 4px;
-  border-radius: 7px;
+  border-radius: 6px;
 }
 
 #go {
@@ -280,7 +280,7 @@ footer {
 
   #results {
     position: relative;
-    margin-top: 35px;
+    margin-top: 43px;
     margin-right: 16px;
     width: 85%;
   }

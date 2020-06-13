@@ -1,45 +1,52 @@
 "use strict";
-
+import responseJson from './data.js'
+const placeholder = '../img/cocktail.png'
 const searchUrl = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-const newsApiKey = "4c7b0c19e9d74afe982d773604074e2f";
-const newsUrl =
-  "https://newsapi.org/v2/everything?q=cocktail&language=en&pageSize=5";
+
+const gNewsApiKey = "";
+const gNewsEndPoint = "https://gnews.io/api/v3/search"
+
 const videosUrl = "https://www.googleapis.com/youtube/v3/search";
-const videoApiKey = "AIzaSyB1JCKlSZCS8gV9QCCVqoJxexn2-iRCeYs";
+const videoApiKey = "";
 
 //function to get news related to cocktails
-function getNews() {
-  const options = {
-    headers: new Headers({
-      "X-Api-Key": newsApiKey
-    })
-  };
-  fetch(newsUrl, options)
+function getNews(searchTerm) {
+
+  const url = `${gNewsEndPoint}?q=${searchTerm}&token=${gNewsApiKey}`
+
+  // displayNews(responseJson)
+  fetch(url)
     .then(response => {
       if (response.ok) {
+        console.log(response)
         return response.json();
       }
       throw new Error(response.statusText);
     })
-    .then(responseJson => displayNews(responseJson))
+    .then(responseJson => {
+      console.log({responseJson})
+      displayNews(responseJson)
+    })
     .catch(err => {
       $("#js-error-message").text(
-        `Something went wrong, Please try again: ${err.message}`
+        `Something went wrong news, Please try again: ${err.message}`
       );
     });
 }
 
 //function to display news
 function displayNews(responseJson) {
+  console.log(responseJson)
   $("#results3").empty();
   for (let i = 0; i < responseJson.articles.length; i++) {
     $("#results3").append(
       `<div class="newsBox">
-         <ul class = nResults>
+         <ul class="nResults">
              <li><h4><a href="${responseJson.articles[i].url}"target="_blank">${responseJson.articles[i].title}</a></h4>
                 <p class = "lineh">${responseJson.articles[i].source.name}</p>
-                <p class= "lineh">By ${responseJson.articles[i].author}</p>
-                <p><img src='${responseJson.articles[i].urlToImage}' id="imgart" alt="${responseJson.articles[i].title}" height ="100" width= "100">${responseJson.articles[i].description}</p>
+                
+                <img src='${responseJson.articles[i].image || placeholder}' id="imgart" alt="${responseJson.articles[i].title}" />
+                <p>${responseJson.articles[i].description}</p>
            </li>
         </ul>
       </div>`
@@ -227,7 +234,7 @@ function watchForm() {
     $(".bich").show();
     $(".med").show();
     getVideos(this.searchTerm);
-    getNews();
+    getNews(this.searchTerm);
     getRecipe(this.searchTerm);
     $(".text-center").click(function() {
       event.preventDefault();
@@ -237,4 +244,11 @@ function watchForm() {
     $("#js-form")[0].reset();
   });
 }
-$(watchForm);
+
+function setFooterYear(){
+  const year = new Date().getFullYear()
+  $('.footer-year').text(year)
+}
+$(setFooterYear,
+  watchForm
+  );
